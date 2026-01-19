@@ -16,4 +16,14 @@ export class EmployeeService {
      {
       return this.http.get<Employee[]>(this.apiUrl);
      }
-}}
+    
+}
+
+createEmployee(employee:Employee):Observable<Employee>{
+  return this.http.post<Employee>(this.apiUrl,employee);
+}
+deleteEmployee(id:number):Observable<void>{
+  const url=`${this.apiUrl}/${id}`;
+  return this.http.delete<void>(url);
+}
+}
